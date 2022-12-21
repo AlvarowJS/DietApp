@@ -6,6 +6,7 @@ import Consejos from '../screens/TabsPlan/Consejos';
 import Intercambio from '../screens/TabsPlan/Intercambio';
 import Patologias from '../screens/TabsPlan/Patologias';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import DietaDetalle from '../components/Plan/DietaDetalle';
 
 const Tab = createBottomTabNavigator()
 const Tabs = () => {
@@ -28,7 +29,7 @@ const Tabs = () => {
             }}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ color, focused, size }) => {
-                    console.log(route.name)
+                    
                     let iconName
                     switch (route.name) {
                         case 'Dieta':
@@ -48,7 +49,7 @@ const Tabs = () => {
                 }
             })}
         >
-            <Tab.Screen name="Dieta" options={{ title: 'Dieta', headerShown: false }} component={Dieta} />
+            <Tab.Screen name="Dieta" options={{ title: 'Dieta', headerShown: false }} component={Dieta} />            
             <Tab.Screen name="Consejos" options={{ title: 'Consejos', headerShown: false }} component={Consejos} />
             <Tab.Screen name="Intercambio" options={{ title: 'Intercambio', headerShown: false }} component={Intercambio} />
             <Tab.Screen name="Patologias" options={{ title: 'Patologias', headerShown: false }} component={Patologias} />

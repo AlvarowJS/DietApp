@@ -1,17 +1,18 @@
 import { View, Text, FlatList, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import EntrenamientoBD from '../api/EntrenamientoBD'
+import { useNavigation } from '@react-navigation/native'
 
 const EjercicioVideos = () => {
-    
-    const [ejercicio, setEjercicio] = useState()
+    const navigation = useNavigation();
+    const [ejercicio, setEjercicio] = useState('')
     useEffect(() => {
         EntrenamientoBD.get()
             .then(resp => {
                 setEjercicio(resp.data.data)
             })
     }, [])
-    let rep = 'https://intranet.dietservice.pe/appdiet/images/';
+    let rep = 'https://intranet.dietservice.pe/assets/uploads/tags/';
     return (
         <View style={{ marginHorizontal: 30, backgroundColor: 'white' }}>
             <ScrollView style={{ marginTop: 20 }}>
@@ -21,7 +22,9 @@ const EjercicioVideos = () => {
                     refreshing="false"
                     numColumns={1}
                     renderItem={({ item }) =>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={ () => navigation.navigate('EjercicioVideosDetalle', item)}
+                        >
                             <View style={{ flex: 3, flexDirection: 'row', marginBottom: 30, justifyContent: 'space-between', alignItems: 'flex-start', borderTopWidth: 1, borderColor: '#F0F0F0', paddingTop: 20 }}>
                                 <View style={{ borderWidth: 1, marginHorizontal: 20, borderRadius: 10 }}>
                                     <Image source={{ uri: rep + item?.canal_tags_id.foto }} style={{ width: 50, height: 50 }} />

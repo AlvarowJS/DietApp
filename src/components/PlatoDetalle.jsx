@@ -19,7 +19,7 @@ const PlatoDetalle = (props) => {
   }, [])
 
   
-  console.log(getPlato, 'api')
+  
   let repChef = 'https://intranet.dietservice.pe/appdiet/images/';
   
   return (

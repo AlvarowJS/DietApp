@@ -1,8 +1,9 @@
 
 //////////////////// STRINGS
 
-const Strings = {
 
+const Strings = {
+    
     ST0: "Home",
 
     ST1: "Recipes",

@@ -1,55 +1,68 @@
-import { Button, View, Text, Dimensions, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { Button, View, Text, Dimensions, ScrollView, TouchableOpacity, Image, FlatList, StyleSheet } from 'react-native'
 import { Col, Row, Grid } from "react-native-easy-grid";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Strings from '../../utils/Strings';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-var styles = require('../../../assets/files/Styles');
+import axios from 'axios';
+
 
 const Consejos = ({ navigation }) => {
+  const [consejos, setConsejos] = useState('')
+
+  
+  let idConsejo = global.idPlan.id
+  let imgPermitidos = '../../../assets/images/consejos/permitidos.png'
+  let imgProhibidos = '../../../assets/images/consejos/prohibidos.png'
+  let imgNoOlvidar = '../../../assets/images/consejos/no_olvidar.png'
+
+  useEffect(() => {
+    axios.get(`https://dietservice.bitjoins.pe/api/plan-alimentacion/recomendaciones/${idConsejo}`)
+      .then(resp => {
+        setConsejos(resp.data.data)
+      })
+  }, [])
+
+  
   return (
     <View style={{ marginTop: 30 }}>
-      <ScrollView >
-        <View style={styles.headersContainer}>
-          <Grid>
-            <Col size={2} style={{ alignContent: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 16, color: '#8D8C8C', fontWeight: 'bold' }}>{Strings.STWELCOME} {Strings.STUSER} </Text>
-              <Text style={{ fontSize: 24, color: '#E4C07E', fontWeight: 'bold' }}>{Strings.ST4}</Text>
+      <FlatList
+        data={consejos}
+        refreshing="false"
+        numColumns={1}
+        renderItem={({ item }) =>
+          <View style={styles.container}>
+            {/* <Image source={require(
+              item.tipo == 1 || item.tipo == 2 ? imgPermitidos :                
+              item.tipo == 3 ? imgProhibidos : 
+              imgNoOlvidar
+              )} 
+              style={{ width: 50, height: 50 }} /> */}
+            
+            {/* <Image source={require(imgPermitidos)} style={{ width: 150, height: 150 }} /> */}
+            <Text style={styles.titulo}>{
+              item.tipo == 1 ? 'Pautas Generales' :
+                item.tipo == 2 ? 'Alimentos Permitidos' :
+                  item.tipo == 3 ? 'Prohibidos(Consumo mensual)' :
+                    'No olvidar'}
+            </Text>
+            <Text>{item.recomendacion}</Text>
+          </View>
 
-            </Col>
-            <Col style={{ alignItems: 'flex-end', alignContent: 'flex-end', justifyContent: 'flex-end' }}>
-              <Grid>
-                <TouchableOpacity activeOpacity={1}>
-                  <Ionicons name="search" style={{ fontSize: 27, color: '#AAA9A9', marginRight: 5 }} />
-                </TouchableOpacity>
-
-                <TouchableOpacity activeOpacity={1}>
-                  <Ionicons name="menu" onPress={() => navigation.openDrawer()} style={styles.headerMenu} />
-                </TouchableOpacity>
-              </Grid>
-            </Col>
-          </Grid>
-        </View>
-        <View>
-          
-          <Text>Pautas Generales</Text>
-          <Text>La ingesta de Intermedios es importante porque favorece la adaptación al nuevo plan de alimentación (NO OMITIR NINGUNA COMIDA). No pasar más de 3 o 4 horas sin comer porque favorecerá la descompensación de los niveles de azúcar en sangre y por ende de la insulinas</Text>
-        </View>
-        <View>
-          <Text>Alimentos Permitidos</Text>
-          <Text>La ingesta de Intermedios es importante porque favorece la adaptación al nuevo plan de alimentación (NO OMITIR NINGUNA COMIDA). No pasar más de 3 o 4 horas sin comer porque favorecerá la descompensación de los niveles de azúcar en sangre y por ende de la insulinas</Text>
-        </View>
-        <View>
-          <Text>Prohibidos (Consumo mensual)</Text>
-          <Text>La ingesta de Intermedios es importante porque favorece la adaptación al nuevo plan de alimentación (NO OMITIR NINGUNA COMIDA). No pasar más de 3 o 4 horas sin comer porque favorecerá la descompensación de los niveles de azúcar en sangre y por ende de la insulinas</Text>
-        </View>
-        <View>
-          <Text>No Olvidar</Text>
-          <Text>La ingesta de Intermedios es importante porque favorece la adaptación al nuevo plan de alimentación (NO OMITIR NINGUNA COMIDA). No pasar más de 3 o 4 horas sin comer porque favorecerá la descompensación de los niveles de azúcar en sangre y por ende de la insulinas</Text>
-        </View>
-
-      </ScrollView>
+        }
+      />
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  titulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    
+  },
+  container: {
+    marginHorizontal: 30
+  }
+})
 
 export default Consejos

@@ -12,7 +12,7 @@ const Ejercicio = () => {
                 setEjercicio(resp.data.data)
             })
     }, [])
-    console.log(ejercicio)
+    
     return (
         <View>
             

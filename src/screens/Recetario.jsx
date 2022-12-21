@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, View, Text, Dimensions, ScrollView, TouchableOpacity } from 'react-native'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import Strings from '../utils/Strings';
@@ -9,13 +9,20 @@ var { height, width } = Dimensions.get('window');
 var styles = require('../../assets/files/Styles');
 
 const Recetario = ({navigation}) => {
+  const [nombre, setNombre] = useState('')
+  const [apellido, setApellido] = useState('')
+  useEffect(() => {
+    setNombre(global.Id.persona_id.nombre)
+    setApellido(global.Id.persona_id.apellido)
+  }, [])
+  
   return (
     <View style={{ backgroundColor: '#F4F5FA' }}>
       <ScrollView>
         <View style={{ paddingTop: 45, paddingHorizontal: 30, width: width, marginBottom: 5 }}>
           <Grid>
             <Col size={2} style={{ alignContent: 'center', justifyContent: 'center' }}>
-              <Text style={{ fontSize: 16, color: '#8D8C8C', fontWeight: 'bold' }}>{Strings.STWELCOME} {Strings.STUSER} </Text>
+              <Text style={{ fontSize: 16, color: '#8D8C8C', fontWeight: 'bold' }}>{Strings.STWELCOME} {nombre} {apellido} </Text>
               <Text style={{ fontSize: 24, color: '#E4C07E', fontWeight: 'bold' }}>{Strings.STRECETARIO}</Text>
 
             </Col>

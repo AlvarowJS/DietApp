@@ -33,7 +33,7 @@ const Side = ({navigation}) => {
 
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.item_menu} onPress={() => navigation.navigate('Tabs')} icon>
+        <TouchableOpacity style={styles.item_menu} onPress={() => navigation.navigate('Plan')} icon>
 
             <MaterialCommunityIcons name="food-apple-outline" style={styles.iconSidemenu} />
             <Text style={styles.text_menu}>{Strings.ST4}</Text>

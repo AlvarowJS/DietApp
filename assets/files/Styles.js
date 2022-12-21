@@ -119,7 +119,12 @@ module.exports = StyleSheet.create({
   iconSidemenu: {
     color: 'white',
     fontSize: 25,
-    paddingLeft: 20
+    paddingLeft: 5
+
+  },
+  iconSidemenuLogout: {
+    color: 'white',
+    fontSize: 25    
 
   },
   logout: {
