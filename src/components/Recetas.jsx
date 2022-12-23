@@ -13,13 +13,12 @@ const Recetas = () => {
             .then(resp => {                
                 setReceta(resp.data.data)
             })
+            .catch(err => console.log(err))
     }, [])
 
     let rep1 = 'https://intranet.dietservice.pe/appdiet/images/';
 
     return (
-        <View style={{ padding: 20, paddingTop: 10, backgroundColor: '#FFF' }}>
-            <ScrollView>
                 <FlatList
                 
                     data={receta}
@@ -41,8 +40,6 @@ const Recetas = () => {
                    
 
                 />
-            </ScrollView>
-        </View>
     )
 }
 

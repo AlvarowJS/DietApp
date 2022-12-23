@@ -50,7 +50,7 @@ const Evolucion = ({ navigation }) => {
         </Grid>
       </View>
 
-      <ImageBackground source={require('../../assets/images/man_run.png')} style={styles.man_run} imageStyle={{ borderRadius: 30 }}>
+      <ImageBackground source={require('../../assets/images/man_run.png')} style={styles.manRun} imageStyle={{ borderRadius: 30 }}>
         <LinearGradient colors={['rgba(50,170,150,0.5)', 'rgba(rgba(50,170,150,0.5)']} style={styles.evolucionMonit} >
           <Text style={{ color: 'white', fontSize: 20 }}>Monitoreo tu progreso</Text>
           <Text style={{ color: 'white' }}>Consulta todo tu historial aqui</Text>

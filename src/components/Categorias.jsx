@@ -11,10 +11,10 @@ const Categorias = () => {
    
     useEffect(() => {
         dietaBD.get()
-            .then(resp => {
-                
+            .then(resp => {                
                 setCategoria(resp.data)
             })
+            .catch(err => console.log(err))
     }, [])
 
     let rep = 'https://intranet.dietservice.pe/appdiet/images/';

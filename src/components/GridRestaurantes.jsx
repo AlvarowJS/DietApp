@@ -16,6 +16,7 @@ const GridRestaurantes = () => {
 
                 setRestaurante(resp.data.data)
             })
+            .catch(err => console.log(err))
     }, [])
 
     let rep2 = 'https://intranet.dietservice.pe/appdiet/images/';

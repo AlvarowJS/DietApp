@@ -11,6 +11,7 @@ const Ejercicio = () => {
             .then(resp => {
                 setEjercicio(resp.data.data)
             })
+            .catch(err => console.log(err))
     }, [])
     
     return (

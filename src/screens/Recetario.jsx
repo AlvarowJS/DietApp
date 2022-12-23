@@ -18,7 +18,7 @@ const Recetario = ({navigation}) => {
   
   return (
     <View style={{ backgroundColor: '#F4F5FA' }}>
-      <ScrollView>
+      <ScrollView style={{ height: '40%'}}>
         <View style={{ paddingTop: 45, paddingHorizontal: 30, width: width, marginBottom: 5 }}>
           <Grid>
             <Col size={2} style={{ alignContent: 'center', justifyContent: 'center' }}>
@@ -48,12 +48,12 @@ const Recetario = ({navigation}) => {
 
         <Categorias />
 
-        <Recetas />
 
-        <View style={{ height: height * 0.10 }} />
 
 
       </ScrollView>
+      <Recetas />
+
     </View>
   )
 }

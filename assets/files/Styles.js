@@ -145,7 +145,7 @@ module.exports = StyleSheet.create({
     borderRadius: 30,
     marginRight: 10
   },
-  man_run: {
+  manRun: {
     width: 350,
     height: 380,
     borderRadius: 50,
@@ -187,7 +187,7 @@ module.exports = StyleSheet.create({
     marginTop: 15
 
   },
-  chefDetalle: {    
+  chefDetalle: {
     width: 300, 
     marginBottom: 20,
     borderRadius: 20,

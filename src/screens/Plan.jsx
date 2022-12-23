@@ -65,7 +65,7 @@ const Plan = () => {
           </Col>
         </Grid>
 
-
+        </ScrollView>
 
         <FlatList
           data={hisotrial.reverse()}
@@ -88,7 +88,7 @@ const Plan = () => {
           }
         />
 
-      </ScrollView>
+     
     </View>
   )
 }

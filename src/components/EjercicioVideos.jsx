@@ -11,11 +11,12 @@ const EjercicioVideos = () => {
             .then(resp => {
                 setEjercicio(resp.data.data)
             })
+            .catch(err => console.log(err))
     }, [])
     let rep = 'https://intranet.dietservice.pe/assets/uploads/tags/';
     return (
-        <View style={{ marginHorizontal: 30, backgroundColor: 'white' }}>
-            <ScrollView style={{ marginTop: 20 }}>
+        <View style={{ marginHorizontal: 30, backgroundColor: 'white'}}>
+            
 
                 <FlatList
                     data={ejercicio}
@@ -42,7 +43,6 @@ const EjercicioVideos = () => {
                     }
                 />
 
-            </ScrollView>
         </View>
     )
 }

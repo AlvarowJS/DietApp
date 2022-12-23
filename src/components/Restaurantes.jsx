@@ -14,6 +14,7 @@ const Restaurantes = () => {
             .then(resp => {
                 setRestaurante(resp.data.data)
             })
+            .catch(err => console.log(err))
     }, [])
     
 

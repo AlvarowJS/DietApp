@@ -28,8 +28,7 @@ const Nutricion = ({ EstadoGlobal }) => {
                     innerRadius={40}
                     sections={[
                         {
-                            percentage: evoActual?.p_grasa,
-                            // percentage: 40,
+                            percentage: parseInt(evoActual?.p_grasa),
                             color: '#E5B359',
                         },
                     ]}
@@ -57,8 +56,8 @@ const Nutricion = ({ EstadoGlobal }) => {
                     innerRadius={40}
                     sections={[
                         {
-                            percentage: evoActual?.p_grasa,
-                            // percentage: 40,
+                            percentage: parseInt(evoActual?.p_grasa),
+                            
                             color: '#24AC90',
                         },
                     ]}
@@ -86,8 +85,8 @@ const Nutricion = ({ EstadoGlobal }) => {
                     innerRadius={40}
                     sections={[
                         {
-                            percentage: evoActual?.p_masa,
-                            // percentage: 40,
+                            percentage: parseInt(evoActual?.p_masa),
+                            
                             color: '#E46960',
                         },
                     ]}
